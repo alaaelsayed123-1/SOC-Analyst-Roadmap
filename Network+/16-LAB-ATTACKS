@@ -1,0 +1,94 @@
+
+### 🚨 Possible Causes
+- DHCP Server failure
+- VLAN misconfiguration
+- DHCP starvation attack
+
+### 🔍 SOC Investigation Steps
+- Check DHCP server status
+- Review switch VLAN settings
+- Analyze traffic volume
+
+### 🛠️ Mitigation
+- Restore DHCP service
+- Rate-limit DHCP requests
+- Enable DHCP Snooping
+
+---
+
+## 🔹 Part 4: Alternative Configuration
+
+### 📌 Description
+Critical systems use **alternative static IPs** if DHCP fails.
+
+### 🧪 Scenario
+A medical system switches to its backup IP configuration.
+
+### 🚨 Security Risk
+- Predictable IP targeting
+- Unauthorized access attempts
+
+### 🛠️ Mitigation
+- Firewall rules
+- ACLs
+- Continuous monitoring
+
+---
+
+## 🔹 Part 5: DHCP DORA Process
+
+### 🔄 Steps
+1. Discover
+2. Offer
+3. Request
+4. Acknowledge
+
+### 🧪 Scenario
+An attacker floods the network with fake DHCP requests.
+
+### 🚨 Attack Type
+- DHCP Starvation (DoS)
+
+### 🔍 SOC Investigation Steps
+- Monitor DHCP pool usage
+- Detect abnormal DISCOVER rates
+- Review IDS alerts
+
+### 🛠️ Mitigation
+- DHCP rate limiting
+- MAC filtering
+- Switch security features
+
+---
+
+## 🧠 SOC Analyst Mindset
+
+| Symptom | Possible Cause | Action |
+|------|--------------|-------|
+IP Conflict | Spoofing | Check ARP |
+Wrong Gateway | Rogue DHCP | Inspect DHCP logs |
+APIPA Address | DHCP Failure | Check Server |
+Slow Network | MITM / Flood | Traffic analysis |
+
+---
+
+## 🏁 Conclusion
+
+This lab demonstrates how **network fundamentals directly impact security**.
+
+> A SOC Analyst doesn’t just look at alerts —  
+> **they understand how the network behaves when under attack.**
+
+---
+
+## 🚀 Skills Demonstrated
+- Networking fundamentals
+- Security analysis
+- Incident response thinking
+- SOC-level troubleshooting
+
+---
+
+📌 **Author:** Alaa Taissir El Sayed  
+📌 **Role:** SOC Analyst / Cybersecurity Student  
+📌 **Focus:** Networking, Detection, Defense
