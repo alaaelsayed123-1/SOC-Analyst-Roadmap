@@ -1,0 +1,193 @@
+# 🛡️ SOC Analyst Networking & IP Addressing – Practical Lab
+
+## 🎯 Lab Objective
+This lab simulates **real-world networking scenarios and attacks** that a **SOC Analyst** may face, focusing on:
+- IP Addressing
+- DHCP mechanisms
+- Network misconfigurations
+- Common Layer 2 & Layer 3 attacks
+- Detection and mitigation techniques
+
+---
+
+## 🧠 Scenario Overview
+
+You are a **SOC Analyst** monitoring a corporate network consisting of:
+- Employees PCs
+- Servers
+- Switches
+- Routers
+- DHCP Server
+- Firewall
+
+Suddenly, users report:
+- No internet access
+- IP conflicts
+- Slow network performance
+
+Your task is to **investigate, detect, and mitigate** the issues.
+
+---
+
+## 🧩 Network Architecture
+
+- Network: `192.168.10.0/24`
+- Gateway: `192.168.10.1`
+- DHCP Server: `192.168.10.5`
+- Web Server (Static IP): `192.168.10.10`
+
+---
+
+## 🔹 Part 1: Static IP Addressing
+
+### 📌 Description
+Servers are configured with **static IP addresses** to ensure consistent access.
+
+### 🧪 Scenario
+An attacker inside the network manually assigns:
+pretending to be the Web Server.
+
+### 🚨 Attack Type
+- IP Spoofing
+- ARP Poisoning
+
+### 🔍 SOC Investigation Steps
+- Check ARP tables
+- Review switch MAC address tables
+- Analyze IDS/IPS alerts
+
+### 🛠️ Mitigation
+- Port Security
+- Static ARP entries
+- Network segmentation
+- Switch monitoring
+
+---
+
+## 🔹 Part 2: Dynamic IP Addressing (DHCP)
+
+### 📌 Description
+Employee devices obtain IPs dynamically via DHCP.
+
+### 🧪 Scenario
+A rogue device starts acting as a **fake DHCP server**, assigning:
+- Wrong Gateway
+- Attacker-controlled DNS
+
+### 🚨 Attack Type
+- Rogue DHCP
+- Man-in-the-Middle (MITM)
+
+### 🔍 SOC Investigation Steps
+- Monitor DHCP logs
+- Detect multiple DHCP OFFER packets
+- Analyze abnormal gateway assignments
+
+### 🛠️ Mitigation
+- Enable DHCP Snooping
+- Configure trusted ports
+- Block unauthorized DHCP responses
+
+---
+
+## 🔹 Part 3: APIPA (169.254.x.x)
+
+### 📌 Description
+Devices self-assign APIPA addresses when DHCP fails.
+
+### 🧪 Scenario
+Multiple devices suddenly receive:
+
+### 🚨 Possible Causes
+- DHCP Server failure
+- VLAN misconfiguration
+- DHCP starvation attack
+
+### 🔍 SOC Investigation Steps
+- Check DHCP server status
+- Review switch VLAN settings
+- Analyze traffic volume
+
+### 🛠️ Mitigation
+- Restore DHCP service
+- Rate-limit DHCP requests
+- Enable DHCP Snooping
+
+---
+
+## 🔹 Part 4: Alternative Configuration
+
+### 📌 Description
+Critical systems use **alternative static IPs** if DHCP fails.
+
+### 🧪 Scenario
+A medical system switches to its backup IP configuration.
+
+### 🚨 Security Risk
+- Predictable IP targeting
+- Unauthorized access attempts
+
+### 🛠️ Mitigation
+- Firewall rules
+- ACLs
+- Continuous monitoring
+
+---
+
+## 🔹 Part 5: DHCP DORA Process
+
+### 🔄 Steps
+1. Discover
+2. Offer
+3. Request
+4. Acknowledge
+
+### 🧪 Scenario
+An attacker floods the network with fake DHCP requests.
+
+### 🚨 Attack Type
+- DHCP Starvation (DoS)
+
+### 🔍 SOC Investigation Steps
+- Monitor DHCP pool usage
+- Detect abnormal DISCOVER rates
+- Review IDS alerts
+
+### 🛠️ Mitigation
+- DHCP rate limiting
+- MAC filtering
+- Switch security features
+
+---
+
+## 🧠 SOC Analyst Mindset
+
+| Symptom | Possible Cause | Action |
+|------|--------------|-------|
+IP Conflict | Spoofing | Check ARP |
+Wrong Gateway | Rogue DHCP | Inspect DHCP logs |
+APIPA Address | DHCP Failure | Check Server |
+Slow Network | MITM / Flood | Traffic analysis |
+
+---
+
+## 🏁 Conclusion
+
+This lab demonstrates how **network fundamentals directly impact security**.
+
+> A SOC Analyst doesn’t just look at alerts —  
+> **they understand how the network behaves when under attack.**
+
+---
+
+## 🚀 Skills Demonstrated
+- Networking fundamentals
+- Security analysis
+- Incident response thinking
+- SOC-level troubleshooting
+
+---
+
+📌 **Author:** Alaa Taissir El Sayed  
+📌 **Role:** SOC Analyst / Cybersecurity Student  
+📌 **Focus:** Networking, Detection, Defense
