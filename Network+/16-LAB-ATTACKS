@@ -1,3 +1,102 @@
+# 🛡️ SOC Analyst Networking & IP Addressing – Practical Lab
+
+## 🎯 Lab Objective
+This lab simulates **real-world networking scenarios and attacks** that a **SOC Analyst** may face, focusing on:
+- IP Addressing
+- DHCP mechanisms
+- Network misconfigurations
+- Common Layer 2 & Layer 3 attacks
+- Detection and mitigation techniques
+
+---
+
+## 🧠 Scenario Overview
+
+You are a **SOC Analyst** monitoring a corporate network consisting of:
+- Employees PCs
+- Servers
+- Switches
+- Routers
+- DHCP Server
+- Firewall
+
+Suddenly, users report:
+- No internet access
+- IP conflicts
+- Slow network performance
+
+Your task is to **investigate, detect, and mitigate** the issues.
+
+---
+
+## 🧩 Network Architecture
+
+- Network: `192.168.10.0/24`
+- Gateway: `192.168.10.1`
+- DHCP Server: `192.168.10.5`
+- Web Server (Static IP): `192.168.10.10`
+
+---
+
+## 🔹 Part 1: Static IP Addressing
+
+### 📌 Description
+Servers are configured with **static IP addresses** to ensure consistent access.
+
+### 🧪 Scenario
+An attacker inside the network manually assigns:
+pretending to be the Web Server.
+
+### 🚨 Attack Type
+- IP Spoofing
+- ARP Poisoning
+
+### 🔍 SOC Investigation Steps
+- Check ARP tables
+- Review switch MAC address tables
+- Analyze IDS/IPS alerts
+
+### 🛠️ Mitigation
+- Port Security
+- Static ARP entries
+- Network segmentation
+- Switch monitoring
+
+---
+
+## 🔹 Part 2: Dynamic IP Addressing (DHCP)
+
+### 📌 Description
+Employee devices obtain IPs dynamically via DHCP.
+
+### 🧪 Scenario
+A rogue device starts acting as a **fake DHCP server**, assigning:
+- Wrong Gateway
+- Attacker-controlled DNS
+
+### 🚨 Attack Type
+- Rogue DHCP
+- Man-in-the-Middle (MITM)
+
+### 🔍 SOC Investigation Steps
+- Monitor DHCP logs
+- Detect multiple DHCP OFFER packets
+- Analyze abnormal gateway assignments
+
+### 🛠️ Mitigation
+- Enable DHCP Snooping
+- Configure trusted ports
+- Block unauthorized DHCP responses
+
+---
+
+## 🔹 Part 3: APIPA (169.254.x.x)
+
+### 📌 Description
+Devices self-assign APIPA addresses when DHCP fails.
+
+### 🧪 Scenario
+Multiple devices suddenly receive:
 
 ### 🚨 Possible Causes
 - DHCP Server failure
